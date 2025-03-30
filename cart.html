@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart | Bagbaan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="font-sans bg-gray-50">
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-10 bg-white shadow-lg">
+        <div class="container mx-auto px-6 py-3">
+            <div class="flex justify-between items-center">
+                <a href="index.html" class="text-2xl font-bold text-green-600">Bagbaan</a>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-gray-600 hover:text-green-600">Home</a>
+                    <a href="hire.html" class="text-gray-600 hover:text-green-600">Hire Gardeners</a>
+                    <a href="shop.html" class="text-gray-600 hover:text-green-600">Shop</a>
+                    <a href="plant-check.html" class="text-gray-600 hover:text-green-600">Plant Health Check</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="cart.html" class="text-green-600">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span id="cartCount" class="ml-1">0</span>
+                    </a>
+                    <div class="md:hidden">
+                        <button class="text-gray-600 focus:outline-none">
+                            <i class="fas fa-bars text-2xl"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-12">
+        <h1 class="text-3xl font-bold mb-8">Your Shopping Cart</h1>
+        
+        <div class="grid md:grid-cols-3 gap-8">
+            <!-- Cart Items -->
+            <div class="md:col-span-2">
+                <div id="cartItems" class="bg-white rounded-lg shadow-md p-6">
+                    <!-- Cart items will be dynamically inserted here -->
+                    <div class="text-center py-12">
+                        <i class="fas fa-shopping-cart text-4xl text-gray-300 mb-4"></i>
+                        <p class="text-gray-500">Your cart is empty</p>
+                        <a href="shop.html" class="mt-4 inline-block bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-lg">
+                            Continue Shopping
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Order Summary -->
+            <div>
+                <div class="bg-white rounded-lg shadow-md p-6 sticky top-24">
+                    <h2 class="text-xl font-semibold mb-4">Order Summary</h2>
+                    
+                    <div class="space-y-4">
+                        <div class="flex justify-between">
+                            <span>Subtotal</span>
+                            <span id="subtotal">$0.00</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Shipping</span>
+                            <span id="shipping">$5.99</span>
+                        </div>
+                        <div class="border-t border-gray-200 pt-4 flex justify-between font-semibold">
+                            <span>Total</span>
+                            <span id="total">$5.99</span>
+                        </div>
+                    </div>
+                    
+                    <a href="checkout.html" id="checkoutBtn" class="mt-6 block w-full bg-green-600 hover:bg-green-700 text-white text-center py-3 px-4 rounded-lg font-medium transition duration-300">
+                        Proceed to Checkout
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Bagbaan</h3>
+                    <p>Your complete gardening solution platform.</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="hover:text-green-400">Home</a></li>
+                        <li><a href="hire.html" class="hover:text-green-400">Hire Gardeners</a></li>
+                        <li><a href="shop.html" class="hover:text-green-400">Shop</a></li>
+                        <li><a href="plant-check.html" class="hover:text-green-400">Plant Health</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Connect</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="hover:text-green-400"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="hover:text-green-400"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="hover:text-green-400"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p>&copy; 2023 Bagbaan. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load cart from localStorage
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const cartItemsContainer = document.getElementById('cartItems');
+            const subtotalElement = document.getElementById('subtotal');
+            const shippingElement = document.getElementById('shipping');
+            const totalElement = document.getElementById('total');
+            const checkoutBtn = document.getElementById('checkoutBtn');
+            const cartCountElement = document.getElementById('cartCount');
+
+            // Update cart count
+            function updateCartCount() {
+                const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+                cartCountElement.textContent = totalItems;
+            }
+
+            // Calculate totals
+            function calculateTotals() {
+                const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                const shipping = subtotal > 0 ? 5.99 : 0;
+                const total = subtotal + shipping;
+
+                subtotalElement.textContent = `$${subtotal.toFixed(2)}`;
+                shippingElement.textContent = `$${shipping.toFixed(2)}`;
+                totalElement.textContent = `$${total.toFixed(2)}`;
+
+                // Disable checkout if cart is empty
+                checkoutBtn.classList.toggle('opacity-50', cart.length === 0);
+                checkoutBtn.classList.toggle('cursor-not-allowed', cart.length === 0);
+                checkoutBtn.classList.toggle('hover:bg-green-600', cart.length === 0);
+            }
+
+            // Render cart items
+            function renderCartItems() {
+                if (cart.length === 0) {
+                    cartItemsContainer.innerHTML = `
+                        <div class="text-center py-12">
+                            <i class="fas fa-shopping-cart text-4xl text-gray-300 mb-4"></i>
+                            <p class="text-gray-500">Your cart is empty</p>
+                            <a href="shop.html" class="mt-4 inline-block bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-lg">
+                                Continue Shopping
+                            </a>
+                        </div>
+                    `;
+                    return;
+                }
+
+                let html = '';
+                cart.forEach(item => {
+                    html += `
+                        <div class="flex items-center py-4 border-b border-gray-200" data-id="${item.id}">
+                            <div class="flex-shrink-0 w-20 h-20 bg-gray-100 rounded-lg overflow-hidden">
+                                <img src="https://via.placeholder.com/80" alt="${item.name}" class="w-full h-full object-cover">
+                            </div>
+                            <div class="ml-4 flex-grow">
+                                <h3 class="text-lg font-medium">${item.name}</h3>
+                                <p class="text-gray-600">$${item.price.toFixed(2)}</p>
+                            </div>
+                            <div class="flex items-center">
+                                <button class="quantity-btn decrease px-2 py-1 border rounded-l-lg" data-id="${item.id}">
+                                    <i class="fas fa-minus text-xs"></i>
+                                </button>
+                                <span class="quantity px-3 py-1 border-t border-b">${item.quantity}</span>
+                                <button class="quantity-btn increase px-2 py-1 border rounded-r-lg" data-id="${item.id}">
+                                    <i class="fas fa-plus text-xs"></i>
+                                </button>
+                            </div>
+                            <div class="ml-4 w-20 text-right">
+                                <span class="font-medium">$${(item.price * item.quantity).toFixed(2)}</span>
+                            </div>
+                            <button class="remove-item ml-4 text-red-500 hover:text-red-700" data-id="${item.id}">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    `;
+                });
+
+                cartItemsContainer.innerHTML = html;
+
+                // Add event listeners to quantity buttons
+                document.querySelectorAll('.quantity-btn').forEach(button => {
+                    button.addEventListener('click', function() {
+                        const id = this.dataset.id;
+                        const item = cart.find(item => item.id === id);
+                        const isIncrease = this.classList.contains('increase');
+
+                        if (isIncrease) {
+                            item.quantity += 1;
+                        } else {
+                            if (item.quantity > 1) {
+                                item.quantity -= 1;
+                            } else {
+                                // Remove item if quantity reaches 0
+                                const index = cart.findIndex(item => item.id === id);
+                                cart.splice(index, 1);
+                            }
+                        }
+
+                        localStorage.setItem('cart', JSON.stringify(cart));
+                        renderCartItems();
+                        calculateTotals();
+                        updateCartCount();
+                    });
+                });
+
+                // Add event listeners to remove buttons
+                document.querySelectorAll('.remove-item').forEach(button => {
+                    button.addEventListener('click', function() {
+                        const id = this.dataset.id;
+                        const index = cart.findIndex(item => item.id === id);
+                        cart.splice(index, 1);
+
+                        localStorage.setItem('cart', JSON.stringify(cart));
+                        renderCartItems();
+                        calculateTotals();
+                        updateCartCount();
+                    });
+                });
+            }
+
+            // Initialize
+            renderCartItems();
+            calculateTotals();
+            updateCartCount();
+        });
+    </script>
+</body>
+</html>
