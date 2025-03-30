@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bagbaan - Your Gardening Solution</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .hero-image {
+            background-image: url('https://images.pexels.com/photos/4503273/pexels-photo-4503273.jpeg');
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+</head>
+<body class="font-sans">
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-10 bg-white shadow-lg">
+        <div class="container mx-auto px-6 py-3">
+            <div class="flex justify-between items-center">
+                <a href="#" class="text-2xl font-bold text-green-600">Bagbaan</a>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-green-600 font-medium">Home</a>
+                    <a href="hire.html" class="text-gray-600 hover:text-green-600">Hire Gardeners</a>
+                    <a href="shop.html" class="text-gray-600 hover:text-green-600">Shop</a>
+                    <a href="plant-check.html" class="text-gray-600 hover:text-green-600">Plant Health Check</a>
+                </div>
+                <div class="md:hidden">
+                    <button class="text-gray-600 focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-image h-96 flex items-center justify-center text-white">
+        <div class="text-center px-4">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">Your One-Stop Garden Solution</h1>
+            <p class="text-xl mb-8">Hire professionals, buy quality products, and keep your plants healthy</p>
+            <a href="hire.html" class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-medium">Get Started</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12">Our Services</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                    <div class="text-green-600 mb-4">
+                        <i class="fas fa-user-tie text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Hire Gardeners</h3>
+                    <p class="text-gray-600">Find professional gardeners for all your landscaping and maintenance needs.</p>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                    <div class="text-green-600 mb-4">
+                        <i class="fas fa-shopping-cart text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Shop Products</h3>
+                    <p class="text-gray-600">Quality gardening tools, seeds, and accessories at competitive prices.</p>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                    <div class="text-green-600 mb-4">
+                        <i class="fas fa-leaf text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Plant Health</h3>
+                    <p class="text-gray-600">AI-powered plant health detection to keep your garden thriving.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Bagbaan</h3>
+                    <p>Your complete gardening solution platform.</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="hover:text-green-400">Home</a></li>
+                        <li><a href="hire.html" class="hover:text-green-400">Hire Gardeners</a></li>
+                        <li><a href="shop.html" class="hover:text-green-400">Shop</a></li>
+                        <li><a href="plant-check.html" class="hover:text-green-400">Plant Health</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Connect</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="hover:text-green-400"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="hover:text-green-400"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="hover:text-green-400"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p>&copy; 2023 Bagbaan. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle would go here
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Bagbaan homepage loaded');
+        });
+    </script>
+</body>
+</html>
