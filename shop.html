@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop | Bagbaan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="font-sans bg-gray-50">
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-10 bg-white shadow-lg">
+        <div class="container mx-auto px-6 py-3">
+            <div class="flex justify-between items-center">
+                <a href="index.html" class="text-2xl font-bold text-green-600">Bagbaan</a>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-gray-600 hover:text-green-600">Home</a>
+                    <a href="hire.html" class="text-gray-600 hover:text-green-600">Hire Gardeners</a>
+                    <a href="shop.html" class="text-green-600 font-medium">Shop</a>
+                    <a href="plant-check.html" class="text-gray-600 hover:text-green-600">Plant Health Check</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="cart.html" class="text-gray-600 hover:text-green-600">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span id="cartCount" class="ml-1">0</span>
+                    </a>
+                    <div class="md:hidden">
+                        <button class="text-gray-600 focus:outline-none">
+                            <i class="fas fa-bars text-2xl"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-12">
+        <div class="flex justify-between items-center mb-8">
+            <h1 class="text-3xl font-bold">Shop Gardening Essentials</h1>
+            <div class="relative w-64">
+                <input type="text" placeholder="Search products..." 
+                    class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500">
+                <i class="fas fa-search absolute right-3 top-3 text-gray-400"></i>
+            </div>
+        </div>
+
+        <!-- Category Tabs -->
+        <div class="flex border-b mb-8">
+            <button class="category-tab active px-4 py-2 font-medium text-green-600 border-b-2 border-green-600">All</button>
+            <button class="category-tab px-4 py-2 font-medium text-gray-600 hover:text-green-600">Tools</button>
+            <button class="category-tab px-4 py-2 font-medium text-gray-600 hover:text-green-600">Seeds</button>
+            <button class="category-tab px-4 py-2 font-medium text-gray-600 hover:text-green-600">Accessories</button>
+        </div>
+
+        <!-- Product Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <!-- Product 1 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300">
+                <img src="https://images.pexels.com/photos/5745754/pexels-photo-5745754.jpeg" alt="Gardening Gloves" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <h3 class="text-lg font-semibold">Professional Gardening Gloves</h3>
+                    <p class="text-gray-600 mt-1">Durable, breathable protection</p>
+                    <div class="mt-4 flex justify-between items-center">
+                        <span class="text-xl font-bold text-green-600">$19.99</span>
+                        <button class="add-to-cart bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg" 
+                            data-id="1" data-name="Professional Gardening Gloves" data-price="19.99">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300">
+                <img src="https://images.pexels.com/photos/4505451/pexels-photo-4505451.jpeg" alt="Pruning Shears" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <h3 class="text-lg font-semibold">Premium Pruning Shears</h3>
+                    <p class="text-gray-600 mt-1">Sharp, comfortable grip</p>
+                    <div class="mt-4 flex justify-between items-center">
+                        <span class="text-xl font-bold text-green-600">$29.99</span>
+                        <button class="add-to-cart bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg"
+                            data-id="2" data-name="Premium Pruning Shears" data-price="29.99">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300">
+                <img src="https://images.pexels.com/photos/4505416/pexels-photo-4505416.jpeg" alt="Watering Can" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <h3 class="text-lg font-semibold">Galvanized Watering Can</h3>
+                    <p class="text-gray-600 mt-1">2-gallon capacity</p>
+                    <div class="mt-4 flex justify-between items-center">
+                        <span class="text-xl font-bold text-green-600">$24.99</span>
+                        <button class="add-to-cart bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg"
+                            data-id="3" data-name="Galvanized Watering Can" data-price="24.99">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300">
+                <img src="https://images.pexels.com/photos/4505410/pexels-photo-4505410.jpeg" alt="Tomato Seeds" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <h3 class="text-lg font-semibold">Heirloom Tomato Seeds</h3>
+                    <p class="text-gray-600 mt-1">Pack of 50 seeds</p>
+                    <div class="mt-4 flex justify-between items-center">
+                        <span class="text-xl font-bold text-green-600">$9.99</span>
+                        <button class="add-to-cart bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg"
+                            data-id="4" data-name="Heirloom Tomato Seeds" data-price="9.99">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 5 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300">
+                <img src="https://images.pexels.com/photos/4505413/pexels-photo-4505413.jpeg" alt="Garden Trowel" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <h3 class="text-lg font-semibold">Stainless Steel Trowel</h3>
+                    <p class="text-gray-600 mt-1">Ergonomic handle</p>
+                    <div class="mt-4 flex justify-between items-center">
+                        <span class="text-xl font-bold text-green-600">$14.99</span>
+                        <button class="add-to-cart bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg"
+                            data-id="5" data-name="Stainless Steel Trowel" data-price="14.99">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 6 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300">
+                <img src="https://images.pexels.com/photos/4505411/pexels-photo-4505411.jpeg" alt="Plant Pots" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <h3 class="text-lg font-semibold">Ceramic Plant Pots (Set of 3)</h3>
+                    <p class="text-gray-600 mt-1">Various sizes</p>
+                    <div class="mt-4 flex justify-between items-center">
+                        <span class="text-xl font-bold text-green-600">$34.99</span>
+                        <button class="add-to-cart bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg"
+                            data-id="6" data-name="Ceramic Plant Pots (Set of 3)" data-price="34.99">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Bagbaan</h3>
+                    <p>Your complete gardening solution platform.</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="hover:text-green-400">Home</a></li>
+                        <li><a href="hire.html" class="hover:text-green-400">Hire Gardeners</a></li>
+                        <li><a href="shop.html" class="hover:text-green-400">Shop</a></li>
+                        <li><a href="plant-check.html" class="hover:text-green-400">Plant Health</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Connect</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="hover:text-green-400"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="hover:text-green-400"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="hover:text-green-400"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p>&copy; 2023 Bagbaan. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Cart functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize cart
+            if (!localStorage.getItem('cart')) {
+                localStorage.setItem('cart', JSON.stringify([]));
+            }
+
+            // Update cart count
+            updateCartCount();
+
+            // Add to cart buttons
+            document.querySelectorAll('.add-to-cart').forEach(button => {
+                button.addEventListener('click', function() {
+                    const product = {
+                        id: this.dataset.id,
+                        name: this.dataset.name,
+                        price: parseFloat(this.dataset.price),
+                        quantity: 1
+                    };
+
+                    let cart = JSON.parse(localStorage.getItem('cart'));
+                    const existingItem = cart.find(item => item.id === product.id);
+
+                    if (existingItem) {
+                        existingItem.quantity += 1;
+                    } else {
+                        cart.push(product);
+                    }
+
+                    localStorage.setItem('cart', JSON.stringify(cart));
+                    updateCartCount();
+                    alert(`${product.name} added to cart!`);
+                });
+            });
+
+            function updateCartCount() {
+                const cart = JSON.parse(localStorage.getItem('cart'));
+                const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+                document.getElementById('cartCount').textContent = totalItems;
+            }
+        });
+    </script>
+</body>
+</html>
