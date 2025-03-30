@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plant Health Check | Bagbaan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .dropzone {
+            border: 2px dashed #9CA3AF;
+            transition: all 0.3s ease;
+        }
+        .dropzone.active {
+            border-color: #10B981;
+            background-color: #F0FDF4;
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50">
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-10 bg-white shadow-lg">
+        <div class="container mx-auto px-6 py-3">
+            <div class="flex justify-between items-center">
+                <a href="index.html" class="text-2xl font-bold text-green-600">Bagbaan</a>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-gray-600 hover:text-green-600">Home</a>
+                    <a href="hire.html" class="text-gray-600 hover:text-green-600">Hire Gardeners</a>
+                    <a href="shop.html" class="text-gray-600 hover:text-green-600">Shop</a>
+                    <a href="plant-check.html" class="text-green-600 font-medium">Plant Health Check</a>
+                </div>
+                <div class="md:hidden">
+                    <button class="text-gray-600 focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-12">
+        <div class="max-w-3xl mx-auto">
+            <h1 class="text-3xl font-bold mb-8 text-center">AI Plant Health Detection</h1>
+            
+            <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+                <h2 class="text-xl font-semibold mb-4">Upload Plant Image</h2>
+                <p class="text-gray-600 mb-6">Take a clear photo of your plant's leaves or affected area for analysis.</p>
+                
+                <div id="dropzone" class="dropzone rounded-lg p-8 text-center cursor-pointer mb-4">
+                    <i class="fas fa-cloud-upload-alt text-4xl text-gray-400 mb-4"></i>
+                    <p class="text-gray-500">Drag & drop your plant image here or click to browse</p>
+                    <input type="file" id="fileInput" accept="image/*" class="hidden">
+                </div>
+                <button id="uploadBtn" class="w-full bg-green-600 hover:bg-green-700 text-white py-3 px-4 rounded-lg font-medium transition duration-300">
+                    Analyze Plant
+                </button>
+            </div>
+            
+            <div id="resultsSection" class="bg-white rounded-lg shadow-md p-6 hidden">
+                <h2 class="text-xl font-semibold mb-4">Analysis Results</h2>
+                
+                <div class="flex flex-col md:flex-row gap-6 mb-6">
+                    <div class="flex-1">
+                        <h3 class="font-medium mb-2">Uploaded Image</h3>
+                        <div id="imagePreview" class="border rounded-lg overflow-hidden bg-gray-100 flex items-center justify-center" style="height: 200px;">
+                            <p class="text-gray-500">Preview will appear here</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex-1">
+                        <h3 class="font-medium mb-2">Diagnosis</h3>
+                        <div id="diagnosisResult" class="space-y-4">
+                            <!-- Results will be inserted here -->
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-6">
+                    <div class="flex">
+                        <div class="flex-shrink-0">
+                            <i class="fas fa-lightbulb text-green-500"></i>
+                        </div>
+                        <div class="ml-3">
+                            <h3 class="text-sm font-medium text-green-800">Care Recommendations</h3>
+                            <div id="careTips" class="mt-2 text-sm text-green-700">
+                                <!-- Care tips will be inserted here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button id="newAnalysisBtn" class="w-full bg-gray-200 hover:bg-gray-300 text-gray-800 py-3 px-4 rounded-lg font-medium transition duration-300">
+                    Start New Analysis
+                </button>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-xl font-semibold mb-4">How It Works</h2>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="text-center">
+                        <div class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-camera text-green-600 text-2xl"></i>
+                        </div>
+                        <h3 class="font-medium mb-2">1. Take Photo</h3>
+                        <p class="text-gray-600 text-sm">Capture a clear image of your plant's leaves or affected area.</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-cloud-upload-alt text-green-600 text-2xl"></i>
+                        </div>
+                        <h3 class="font-medium mb-2">2. Upload Image</h3>
+                        <p class="text-gray-600 text-sm">Upload the photo to our AI analysis system.</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-diagnoses text-green-600 text-2xl"></i>
+                        </div>
+                        <h3 class="font-medium mb-2">3. Get Results</h3>
+                        <p class="text-gray-600 text-sm">Receive instant diagnosis and care recommendations.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Bagbaan</h3>
+                    <p>Your complete gardening solution platform.</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="hover:text-green-400">Home</a></li>
+                        <li><a href="hire.html" class="hover:text-green-400">Hire Gardeners</a></li>
+                        <li><a href="shop.html" class="hover:text-green-400">Shop</a></li>
+                        <li><a href="plant-check.html" class="hover:text-green-400">Plant Health</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Connect</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="hover:text-green-400"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="hover:text-green-400"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="hover:text-green-400"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p>&copy; 2023 Bagbaan. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const dropzone = document.getElementById('dropzone');
+            const fileInput = document.getElementById('fileInput');
+            const uploadBtn = document.getElementById('uploadBtn');
+            const resultsSection = document.getElementById('resultsSection');
+            const imagePreview = document.getElementById('imagePreview');
+            const diagnosisResult = document.getElementById('diagnosisResult');
+            const careTips = document.getElementById('careTips');
+            const newAnalysisBtn = document.getElementById('newAnalysisBtn');
+
+            // Drag and drop functionality
+            ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+                dropzone.addEventListener(eventName, preventDefaults, false);
+            });
+
+            function preventDefaults(e) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
+
+            ['dragenter', 'dragover'].forEach(eventName => {
+                dropzone.addEventListener(eventName, highlight, false);
+            });
+
+            ['dragleave', 'drop'].forEach(eventName => {
+                dropzone.addEventListener(eventName, unhighlight, false);
+            });
+
+            function highlight() {
+                dropzone.classList.add('active');
+            }
+
+            function unhighlight() {
+                dropzone.classList.remove('active');
+            }
+
+            dropzone.addEventListener('drop', handleDrop, false);
+            dropzone.addEventListener('click', () => fileInput.click());
+
+            function handleDrop(e) {
+                const dt = e.dataTransfer;
+                const files = dt.files;
+                handleFiles(files);
+            }
+
+            fileInput.addEventListener('change', function() {
+                handleFiles(this.files);
+            });
+
+            function handleFiles(files) {
+                if (files.length) {
+                    const file = files[0];
+                    if (file.type.startsWith('image/')) {
+                        const reader = new FileReader();
+                        reader.onload = function(e) {
+                            imagePreview.innerHTML = `<img src="${e.target.result}" class="w-full h-full object-contain" alt="Uploaded plant image">`;
+                        };
+                        reader.readAsDataURL(file);
+                    } else {
+                        alert('Please upload an image file.');
+                    }
+                }
+            }
+
+            // Analyze button click
+            uploadBtn.addEventListener('click', function() {
+                if (!imagePreview.querySelector('img')) {
+                    alert('Please upload an image first.');
+                    return;
+                }
+
+                // Show loading state
+                uploadBtn.disabled = true;
+                uploadBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Analyzing...';
+
+                // Simulate API call (in a real app, this would call Plant.id API)
+                setTimeout(() => {
+                    // Mock response
+                    const mockResponse = {
+                        disease: "Leaf Spot",
+                        confidence: 87,
+                        scientificName: "Alternaria alternata",
+                        careTips: [
+                            "Remove affected leaves to prevent spread",
+                            "Apply fungicide according to package instructions",
+                            "Avoid overhead watering to keep leaves dry",
+                            "Improve air circulation around the plant"
+                        ]
+                    };
+
+                    // Display results
+                    diagnosisResult.innerHTML = `
+                        <div class="flex justify-between items-center">
+                            <span class="font-medium">Disease Detected:</span>
+                            <span class="font-semibold">${mockResponse.disease}</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="font-medium">Confidence:</span>
+                            <span class="font-semibold">${mockResponse.confidence}%</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="font-medium">Scientific Name:</span>
+                            <span class="font-semibold">${mockResponse.scientificName}</span>
+                        </div>
+                    `;
+
+                    careTips.innerHTML = mockResponse.careTips.map(tip => `<p class="mt-1">• ${tip}</p>`).join('');
+
+                    // Show results section
+                    resultsSection.classList.remove('hidden');
+
+                    // Reset button
+                    uploadBtn.disabled = false;
+                    uploadBtn.textContent = 'Analyze Plant';
+                }, 2000);
+            });
+
+            // New analysis button
+            newAnalysisBtn.addEventListener('click', function() {
+                imagePreview.innerHTML = '<p class="text-gray-500">Preview will appear here</p>';
+                diagnosisResult.innerHTML = '';
+                careTips.innerHTML = '';
+                resultsSection.classList.add('hidden');
+                fileInput.value = '';
+            });
+        });
+    </script>
+</body>
+</html>
